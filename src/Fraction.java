@@ -5,7 +5,7 @@ public class Fraction {
     private int denominator;
 
     //CONSTRUCTOR - a two parameter constructor that initializes the numerator and denominator as ints
-    public Fraction(int numerator, int denominator){
+    public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         //thows an IllegalArgumentException if the denominator is 0
         if (denominator == 0) {
@@ -22,7 +22,8 @@ public class Fraction {
         //example: Fraction myFrac = new Fraction(); would create a fraction who's decimal value is 0
         //You should eliminate as much redundancy as possible by letting your constructors rely on one another using the "this" keyword.
     }
-
+}
+/*
     //BEHAVIORS
     public int getNumerator(){
         //exposes the value of the numerator field to the user
@@ -88,3 +89,4 @@ public class Fraction {
     }
 
 }
+*/
