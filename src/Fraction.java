@@ -13,6 +13,7 @@ public class Fraction {
         } else {
             this.denominator = denominator;
         }
+
         //If the user enters a negative denominator bump the negative sign to the numerator. For example, -3/-2 should be
         // converted to 3/2. Likewise, 5/-3 should be converted to -5/3
         //example: Fraction myFrac = new Fraction(4,5); creates a fraction who's numerator is 4 and denominator is 5
@@ -22,29 +23,30 @@ public class Fraction {
         //example: Fraction myFrac = new Fraction(); would create a fraction who's decimal value is 0
         //You should eliminate as much redundancy as possible by letting your constructors rely on one another using the "this" keyword.
     }
-}
-/*
+
     //BEHAVIORS
-    public int getNumerator(){
+    public int getNumerator() {
         //exposes the value of the numerator field to the user
         return numerator;
     }
 
-    public int getDenominator(){
+    public int getDenominator() {
         //exposes the value of the denominator field to the user
         return denominator;
     }
 
-    public String toString(){
+    public String toString() {
         //no parameters, returns a String, "numerator/denominator", a String representation of the Fraction
-
+        return numerator + "/" + denominator;
     }
 
-    public double toDouble(){
+    public double toDouble() {
         //no parameters, returns a double, the result of numerator/denominator
-
+        double dbl = numerator / denominator;
+        return dbl;
     }
-
+}
+/*
     public Fraction add(Fraction other){
         //has parameters Fraction other, returns Fraction, returns a new Fraction that is the sum of other and this fraction
 
