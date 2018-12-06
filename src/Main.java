@@ -11,12 +11,13 @@ public class Main {
 
         //2. Ask the user to enter in an operation
         //3. As long as the user enters something that’s not "q" or "Q" when asked for an operation you should run the calculator
-        getOperation();
+        String operation = new Main().getOperation();
 
         //4. Get two fractions from the user and then perform whichever operation they ask for
-        getFraction();
+        Fraction fraction1 = new Main().getFraction();//have to make a new instance of the class to call a non-static
+        Fraction fraction2 = new Main().getFraction();//method from a static method
 
-
+        System.out.println("Print results of " + fraction1.toString() + " " + operation + " " + fraction2.toString());
 
         //5. Print the result of the operation
 
@@ -56,11 +57,11 @@ public class Main {
 
         //The first character may or may not be a "-" character. If a negative shows up anywhere else, then it is not a
         //valid fraction. It may be helpful to
-        //remove the "-" character if there is one. USE REGEX TO HANDLE THIS
+        //remove the "-" character if there is one. USE IF .STARTSWITH("-") IS TRUE THEN...
 
         //If there is no "/" character, then every character in the string must be a number (if you removed the "-" sign). COULD USE A FOR LOOP ITERATING OVER EACH CHARACTER TO HANDLE THIS
 
-        //If there is a "/" character, then it may be helpful to create substrings for the numerator and denominator.
+        //If there is a "/" character, then it may be helpful to create substrings for the numerator and denominator.  TRY TO DO SOME SORT OF SPLIT
 
         //Both substrings must be non-empty.
         //Both must be entirely made of numbers.
@@ -81,20 +82,18 @@ public class Main {
         System.out.print("Please enter a fraction (a/b) or integer (a): ");
         String frac = input2.nextLine();
         System.out.println(frac);
-
+        int a = 0;//had to assign these before the IF statement and give a default value for it to work
+        int b = 0;
 
         if (validFraction(frac) == true) {
             //break down frac into variables a & b
-            String[] fracsplit = frac.split("/");
-            List<String> fraclist = Arrays.asList(fracsplit);
+            String[] fracsplit = frac.split("/");//split on the /
+            List<String> fraclist = Arrays.asList(fracsplit);//make array list from split
 
-            int a = Integer.parseInt(fraclist.get(0));//cast string to integer
-            int b = Integer.parseInt(fraclist.get(1));//cast string to integer
-            Fraction fraction1 = new Fraction(a,b);
-            System.out.println(fraction1);
+            a = Integer.parseInt(fraclist.get(0));//cast string at index 0 to integer
+            b = Integer.parseInt(fraclist.get(1));//cast string at index 1 to integer
         }
-
-        return fraction1;
+        return new Fraction(a,b);
     }
 }
 
