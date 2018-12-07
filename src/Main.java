@@ -68,17 +68,17 @@ public class Main {
         if every character in the String is a
         number 0-9 and false otherwise. This method can also check forempty strings. Hint 2: Once you determine whether or not the Strings are
         numbers, you may find the Integer.parseInt() method helpful.*/
+        boolean nvalue = true;
         for (int i = 1; i < string.length() + 1; i++) {
             String string2 = string.substring(i-1,i);
             if (string2.matches("[0-9]+")) {
-                //System.out.println(string2);
-                continue;
+                System.out.println(string2);
             } else {
-                return false;
+                nvalue = false;
             }
         }
 
-        return true;
+        return nvalue;
     }
 
     public boolean validFraction(String frac){
@@ -89,7 +89,7 @@ public class Main {
 
         The first character may or may not be a "-" character. If a negative shows up anywhere else, then it is not a
         valid fraction. It may be helpful to remove the "-" character if there is one.*/
-        boolean bvalue = true;
+        boolean bvalue = false;
         String positiveFrac = "";
         if (frac.startsWith("-")) {
             positiveFrac = frac.substring(1, frac.length());
@@ -132,19 +132,25 @@ public class Main {
         //has parameter Scanner input, returns Fraction, It prompts the user for a String that is a validFraction.
         //If they enter any thing that is not a valid Fraction, it should re-prompt them until it is valid
         Scanner input2 = new Scanner(System.in);
-        System.out.print("Please enter a fraction (a/b) or integer (a): ");
-        String frac = input2.nextLine();
-        System.out.println(frac);
         int a = 0;//had to assign these before the IF statement and give a default value for it to work
         int b = 0;
+        boolean loop = false;
+        while (!loop) {
+            System.out.print("Please enter a fraction (a/b) or integer (a): ");
+            String frac = input2.nextLine();
+            System.out.println(frac);
 
-        if (validFraction(frac) == true) {
-            //break down frac into variables a & b
-            String[] fracsplit = frac.split("/");//split on the /
-            List<String> fraclist = Arrays.asList(fracsplit);//make array list from split
+            if (validFraction(frac)) {
+                //break down frac into variables a & b
+                String[] fracsplit = frac.split("/");//split on the /
+                List<String> fraclist = Arrays.asList(fracsplit);//make array list from split
 
-            a = Integer.parseInt(fraclist.get(0));//cast string at index 0 to integer
-            b = Integer.parseInt(fraclist.get(1));//cast string at index 1 to integer
+                a = Integer.parseInt(fraclist.get(0));//cast string at index 0 to integer
+                b = Integer.parseInt(fraclist.get(1));//cast string at index 1 to integer
+                loop = true;
+            } else if (!validFraction(frac)) {
+                loop = false;
+            }
         }
         return new Fraction(a,b);
     }
