@@ -139,6 +139,7 @@ public class Main {
         int a = 0;//had to assign these before the IF statement and give a default value for it to work
         int b = 0;
         boolean single = false;
+        boolean zero = false;
         boolean loop = false;
         while (!loop) {
             System.out.print("Please enter a fraction (a/b) or integer (a): ");
@@ -156,7 +157,11 @@ public class Main {
                     b = Integer.parseInt(fraclist.get(1));//cast string at index 1 to integer
                 } catch (java.lang.ArrayIndexOutOfBoundsException e) {//if nothing at index 1 (single digit)
                     //b = 1; NEEDS TO BE HANDLED IN THE OBJECT CONSTRUCTOR PER PROJECT INSTRUCTIONS
-                    single = true;
+                    if (a != 0) {
+                        single = true;
+                    } else {
+                        zero = true;
+                    }
                     System.out.println("Denominator of 1");
                 }
 
@@ -166,8 +171,10 @@ public class Main {
                 loop = false;
             }
         }
-        if (single == true) {
+        if (single) {
             return new Fraction(a);
+        } else if (zero) {
+            return new Fraction();
         } else {
             return new Fraction(a, b);
         }

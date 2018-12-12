@@ -7,7 +7,10 @@ public class Fraction {
     /*CONSTRUCTOR - OVERLOADING for zero parameter constructor that initializes the object to 0, meaning the numerator is 0 and the denominator is 1
     example: Fraction myFrac = new Fraction(); would create a fraction who's decimal value is 0*/
 
-
+    public Fraction() {
+        this.numerator = 0;
+        this.denominator = 1;
+    }
 
     /*CONSTRUCTOR - OVERLOADING for single digits to convert to have denominator of 1
     one parameter constructor that initializes the object equal in value to the integer parameter.
