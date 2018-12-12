@@ -90,11 +90,15 @@ public class Main {
         The first character may or may not be a "-" character. If a negative shows up anywhere else, then it is not a
         valid fraction. It may be helpful to remove the "-" character if there is one.*/
         boolean bvalue = false;
+
         String positiveFrac = "";
+
         if (frac.startsWith("-")) {
             positiveFrac = frac.substring(1, frac.length());
         } else if (!frac.startsWith("-") && frac.contains("-")) {
             bvalue = false;
+        } else {
+            positiveFrac = frac;
         }
 
         /*If there is no "/" character, then every character in the string must be a number (if you removed the "-" sign).
@@ -105,7 +109,7 @@ public class Main {
         if (!positiveFrac.contains("/")) {
             if (isNumber(positiveFrac)){
                 bvalue = true;
-            } else {
+            } else if (!isNumber(positiveFrac)){
                 bvalue = false;
             }
         } else if (positiveFrac.contains("/")){
@@ -119,7 +123,7 @@ public class Main {
             } else {
                 bvalue = false;
             }
-        }
+        } else bvalue = false;
 
         return bvalue;
         /*Hint 1: It may be useful to create a helper method isNumber() that takes a String as input and returns true
@@ -134,6 +138,7 @@ public class Main {
         Scanner input2 = new Scanner(System.in);
         int a = 0;//had to assign these before the IF statement and give a default value for it to work
         int b = 0;
+        boolean single = false;
         boolean loop = false;
         while (!loop) {
             System.out.print("Please enter a fraction (a/b) or integer (a): ");
@@ -146,13 +151,26 @@ public class Main {
                 List<String> fraclist = Arrays.asList(fracsplit);//make array list from split
 
                 a = Integer.parseInt(fraclist.get(0));//cast string at index 0 to integer
-                b = Integer.parseInt(fraclist.get(1));//cast string at index 1 to integer
+
+                try {
+                    b = Integer.parseInt(fraclist.get(1));//cast string at index 1 to integer
+                } catch (java.lang.ArrayIndexOutOfBoundsException e) {//if nothing at index 1 (single digit)
+                    //b = 1; NEEDS TO BE HANDLED IN THE OBJECT CONSTRUCTOR PER PROJECT INSTRUCTIONS
+                    single = true;
+                    System.out.println("Denominator of 1");
+                }
+
                 loop = true;
+
             } else if (!validFraction(frac)) {
                 loop = false;
             }
         }
-        return new Fraction(a,b);
+        if (single == true) {
+            return new Fraction(a);
+        } else {
+            return new Fraction(a, b);
+        }
     }
 }
 

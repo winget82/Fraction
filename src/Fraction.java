@@ -4,7 +4,20 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
-    //CONSTRUCTOR - a two parameter constructor that initializes the numerator and denominator as ints
+    /*CONSTRUCTOR - OVERLOADING for zero parameter constructor that initializes the object to 0, meaning the numerator is 0 and the denominator is 1
+    example: Fraction myFrac = new Fraction(); would create a fraction who's decimal value is 0*/
+
+
+
+    /*CONSTRUCTOR - OVERLOADING for single digits to convert to have denominator of 1
+    one parameter constructor that initializes the object equal in value to the integer parameter.
+    example: Fraction myFrac = new Fraction(3) would create a Fraction with numerator equal to 3 and denominator equal to 1.*/
+    public Fraction(int numerator) {
+        this.numerator = numerator;
+        this.denominator = 1;
+    }
+    /*CONSTRUCTOR - a two parameter constructor that initializes the numerator and denominator as ints
+    example: Fraction myFrac = new Fraction(4,5); creates a fraction who's numerator is 4 and denominator is 5*/
     public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         //thows an IllegalArgumentException if the denominator is 0
@@ -14,14 +27,13 @@ public class Fraction {
             this.denominator = denominator;
         }
 
+
+
         /*If the user enters a negative denominator bump the negative sign to the numerator. For example, -3/-2 should be
-        converted to 3/2. Likewise, 5/-3 should be converted to -5/3
-        example: Fraction myFrac = new Fraction(4,5); creates a fraction who's numerator is 4 and denominator is 5
-        one parameter constructor that initializes the object equal in value to the integer parameter.
-        example: Fraction myFrac = new Fraction(3) would create a Fraction with numerator equal to 3 and denominator equal to 1.
-        zero parameter constructor that initializes the object to 0, meaning the numerator is 0 and the denominator is 1
-        example: Fraction myFrac = new Fraction(); would create a fraction who's decimal value is 0
-        You should eliminate as much redundancy as possible by letting your constructors rely on one another using the "this" keyword.*/
+        converted to 3/2. Likewise, 5/-3 should be converted to -5/3 HOW DO YOU GET A NEGATIVE AT THIS POINT IF IT IS AN INVALID FRACTION???  THE OBJECT NEVER GETS MADE*/
+
+
+        //You should eliminate as much redundancy as possible by letting your constructors rely on one another using the "this" keyword.
     }
 
     //BEHAVIORS
