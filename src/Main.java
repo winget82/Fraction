@@ -16,24 +16,30 @@ public class Main {
         //4. Get two fractions from the user and then perform whichever operation they ask for
         Fraction fraction1 = new Main().getFraction();//have to make a new instance of the class to call a non-static
         Fraction fraction2 = new Main().getFraction();//method from a static method
+        //Fraction result = new Fraction();
+
+        if (operation.equals("*")) {
+            fraction1.multiply(fraction2);
+        } else if (operation.equals("/")) {
+            fraction1.divide(fraction2);
+        }
 /*
         if (operation.equals("+")) {
-            Fraction result = new Fraction.add(fraction1, fraction2);
+            Fraction result = fraction1.add(fraction2);
         } else if (operation.equals("-")) {
-            Fraction result = new Fraction.subtract(fraction1, fraction2);
+            Fraction result = fraction1.subtract(fraction2);
         } else if (operation.equals("*")) {
-            Fraction result = new Fraction.multiply(fraction1, fraction2);
+            Fraction result = fraction1.multiply(fraction2);
         } else if (operation.equals("/")) {
-            Fraction result = new Fraction.divide(fraction1, fraction2);
+            Fraction result = fraction1.divide(fraction2);
         } else if (operation.equals("=")) {
-            boolean result = new Fraction.equals(fraction1, fraction2);
+            boolean result = fraction1.equals(fraction2);
         } else {
             System.exit(0);
         }
 */
-        System.out.println("Print results of " + fraction1.toString() + " " + operation + " " + fraction2.toString());
-        //System.out.println("Result = " + result);
         //5. Print the result of the operation
+        System.out.println("Result = " + fraction1.toString()); //NEED TO SIMPLIFY FRACTION - MAKE A METHOD FOR THAT?
     }
 
     public static void intro() {
@@ -55,7 +61,8 @@ public class Main {
         }
         System.out.println(operation);
 
-        if (operation == "q" || operation == "Q") {
+        if (operation.equals("q") || operation.equals("Q")) {
+            System.out.println("Goodbye!");
             System.exit(0);
         }
 
@@ -72,7 +79,7 @@ public class Main {
         for (int i = 1; i < string.length() + 1; i++) {
             String string2 = string.substring(i-1,i);
             if (string2.matches("[0-9]+")) {
-                System.out.println(string2);
+                //System.out.println(string2);
             } else {
                 nvalue = false;
             }
@@ -95,7 +102,8 @@ public class Main {
 
         if (frac.startsWith("-")) {
             positiveFrac = frac.substring(1, frac.length());
-        } else if (!frac.startsWith("-") && frac.contains("-")) {
+        } else if ((!frac.startsWith("-")) && (frac.contains("-"))) {
+            positiveFrac = "contains negative";
             bvalue = false;
         } else {
             positiveFrac = frac;
@@ -144,7 +152,7 @@ public class Main {
         while (!loop) {
             System.out.print("Please enter a fraction (a/b) or integer (a): ");
             String frac = input2.nextLine();
-            System.out.println(frac);
+            //System.out.println(frac);
 
             if (validFraction(frac)) {
                 //break down frac into variables a & b
@@ -168,6 +176,7 @@ public class Main {
                 loop = true;
 
             } else if (!validFraction(frac)) {
+                System.out.print("Invalid input - ");
                 loop = false;
             }
         }
