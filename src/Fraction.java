@@ -59,18 +59,30 @@ public class Fraction {
         return dbl;
     }
 
-    /*
-        public Fraction add(Fraction other){
-            //has parameters Fraction other, returns Fraction, returns a new Fraction that is the sum of other and this fraction
-            //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
-            //Common denominator will be multiple of greatest common divisor
-        }
 
-        public Fraction subtract(Fraction other){
-            //has parameters Fraction other, returns Fraction, returns a new Fractions that is the difference between the other and this fraction
-            //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+    public Fraction add(Fraction other){
+        //has parameters Fraction other, returns Fraction, returns a new Fraction that is the sum of other and this fraction
+        //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+        //Common denominator will be multiple of greatest common divisor
+        Fraction Added = null;
+        if (this.denominator == other.denominator) {
+            Added = new Fraction(this.numerator + other.numerator, this.denominator);
         }
-    */
+        //NEED PORTION TO DETERMINE LCD AND THEN ADD WHEN THEY ARE DIFFERENT
+        return Added;
+    }
+
+    public Fraction subtract(Fraction other){
+        //has parameters Fraction other, returns Fraction, returns a new Fractions that is the difference between the other and this fraction
+        //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+        Fraction Subtracted = null;
+        if (this.denominator == other.denominator) {
+            Subtracted = new Fraction(this.numerator - other.numerator, this.denominator);
+        }
+        //NEED PORTION TO DETERMINE LCD AND THEN SUBTRACT WHEN THEY ARE DIFFERENT
+        return Subtracted;
+    }
+
     public Fraction multiply(Fraction other) {
         //has parameters Fraction other, returns Fraction, returns a new Fraction that is the product of the other and this fraction
         //MULTIPLY NUMERATORS, THEN MULTIPLY DENOMINATORS
