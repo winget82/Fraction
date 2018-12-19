@@ -62,12 +62,13 @@ public class Fraction {
     /*
         public Fraction add(Fraction other){
             //has parameters Fraction other, returns Fraction, returns a new Fraction that is the sum of other and this fraction
-            //GET COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+            //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+            //Common denominator will be multiple of greatest common divisor
         }
 
         public Fraction subtract(Fraction other){
             //has parameters Fraction other, returns Fraction, returns a new Fractions that is the difference between the other and this fraction
-            //GET COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+            //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
         }
     */
     public Fraction multiply(Fraction other) {
@@ -86,7 +87,7 @@ public class Fraction {
         this.denominator *= other.numerator;
         return new Fraction(this.numerator, this.denominator);
     }
-}
+
 /*    }
 
     public boolean equals(Object other){
@@ -104,12 +105,16 @@ public class Fraction {
         //return a
 
     }
-
-    public int gcd(int num, int den){
-        /*has parameters int num int den, returns int, takes in two ints and determines the greatest common DIVISOR
-        (NOT DENOMINATOR) of the two ints, should be a static method
-
-    }
-
-}
 */
+    public static int gcd(int num, int den){
+        /*has parameters int num(erator) int den(emoninator), returns int, takes in two ints and determines the greatest common DIVISOR
+        (NOT DENOMINATOR) of the two ints, should be a static method*/
+        if (den == 0) {
+            return num;
+        } else {
+            return gcd(den,num%den);//uses recursion
+        }
+        //same as ?: is a conditional
+        //public int GCD(int a, int b) { return b==0 ? a : GCD(b, a%b);}
+    }
+}
