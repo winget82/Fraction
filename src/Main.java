@@ -22,20 +22,16 @@ public class Main {
             fraction1.multiply(fraction2);
         } else if (operation.equals("/")) {
             fraction1.divide(fraction2);
-        }
-/*
-        if (operation.equals("+")) {
-            Fraction result = fraction1.add(fraction2);
+        } else if (operation.equals("+")) {
+            fraction1 = fraction1.add(fraction2);
         } else if (operation.equals("-")) {
-            Fraction result = fraction1.subtract(fraction2);
-        } else if (operation.equals("*")) {
-            Fraction result = fraction1.multiply(fraction2);
-        } else if (operation.equals("/")) {
-            Fraction result = fraction1.divide(fraction2);
-        } else if (operation.equals("=")) {
-            boolean result = fraction1.equals(fraction2);
+            fraction1 = fraction1.subtract(fraction2);
         } else {
             System.exit(0);
+        }
+/*
+        } else if (operation.equals("=")) {
+            boolean result = fraction1.equals(fraction2);
         }
 */
         //5. Print the result of the operation
