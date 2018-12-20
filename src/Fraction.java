@@ -62,24 +62,31 @@ public class Fraction {
 
     public Fraction add(Fraction other){
         //has parameters Fraction other, returns Fraction, returns a new Fraction that is the sum of other and this fraction
-        //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
         //Common denominator will be multiple of greatest common divisor
         Fraction Added = null;
+        int lcm = 0;
         if (this.denominator == other.denominator) {
             Added = new Fraction(this.numerator + other.numerator, this.denominator);
+        } else {//get Least Common Multiple (AKA Least Common Denominator)
+            lcm = lcm(this.denominator, other.denominator);
+            Added = new Fraction(((lcm/this.denominator) * this.numerator) + ((lcm/other.denominator) * other.numerator), lcm);
         }
-        //NEED PORTION TO DETERMINE LCD AND THEN ADD WHEN THEY ARE DIFFERENT
+
         return Added;
     }
 
     public Fraction subtract(Fraction other){
-        //has parameters Fraction other, returns Fraction, returns a new Fractions that is the difference between the other and this fraction
-        //GET LEAST COMMON DENOMINATOR FIRST - WILL BE SMALLEST NUMBER THEY CAN BOTH DIVIDE INTO WITHOUT ANY REMAINDER
+        //has parameters Fraction other, returns Fraction, returns a new Fractions that is the difference between
+        // the other and this fraction
         Fraction Subtracted = null;
+        int lcm = 0;
         if (this.denominator == other.denominator) {
             Subtracted = new Fraction(this.numerator - other.numerator, this.denominator);
+        } else {//get Least Common Multiple (AKA Least Common Denominator)
+            lcm = lcm(this.denominator, other.denominator);
+            Subtracted = new Fraction(((lcm/this.denominator) * this.numerator) - ((lcm/other.denominator) * other.numerator), lcm);
         }
-        //NEED PORTION TO DETERMINE LCD AND THEN SUBTRACT WHEN THEY ARE DIFFERENT
+
         return Subtracted;
     }
 
@@ -128,5 +135,11 @@ public class Fraction {
         }
         //same as ?: is a conditional
         //public int GCD(int a, int b) { return b==0 ? a : GCD(b, a%b);}
+    }
+
+    public int lcm(int a, int b) {
+        //this method gets least common multiple / least common denominator
+        int lcm = (a * b)/gcd(a,b);
+        return lcm;
     }
 }
