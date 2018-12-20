@@ -114,17 +114,20 @@ public class Fraction {
         //but should ultimately check if two fractions are equal
 
     }
-
+*/
     public void toLowestTerms(){
-        //has no parameters, returns void, converts fraction to the lowest terms
+        //has no parameters, returns void, converts fraction to the lowest terms uses gcd() Euclidean Algorithm
         //while a and b are not zero
             //find the remainder of a divided by b
             //set a to b
             //set b to the remainder you found
         //return a
+        int gcd = gcd(numerator, denominator);
+        numerator = numerator/gcd;
+        denominator = denominator/gcd;
 
     }
-*/
+
     public static int gcd(int num, int den){
         /*has parameters int num(erator) int den(emoninator), returns int, takes in two ints and determines the greatest common DIVISOR
         (NOT DENOMINATOR) of the two ints, should be a static method*/

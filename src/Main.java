@@ -35,7 +35,8 @@ public class Main {
         }
 */
         //5. Print the result of the operation
-        System.out.println("Result = " + fraction1.toString()); //NEED TO SIMPLIFY FRACTION - MAKE A METHOD FOR THAT?
+        fraction1.toLowestTerms();
+        System.out.println("Result = " + fraction1.toString()); //NEED TO SIMPLIFY FRACTION - MAKE A METHOD FOR THAT? to lowest terms
     }
 
     public static void intro() {
