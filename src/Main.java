@@ -16,7 +16,9 @@ public class Main {
         //4. Get two fractions from the user and then perform whichever operation they ask for
         Fraction fraction1 = new Main().getFraction();//have to make a new instance of the class to call a non-static
         Fraction fraction2 = new Main().getFraction();//method from a static method
-        //Fraction result = new Fraction();
+
+        int finalText = 0;
+        boolean result = true;
 
         if (operation.equals("*")) {
             fraction1.multiply(fraction2);
@@ -26,17 +28,24 @@ public class Main {
             fraction1 = fraction1.add(fraction2);
         } else if (operation.equals("-")) {
             fraction1 = fraction1.subtract(fraction2);
+        } else if (operation.equals("=")) {
+            result = fraction1.equals(fraction2);
+            finalText = 1;
         } else {
             System.exit(0);
         }
-/*
-        } else if (operation.equals("=")) {
-            boolean result = fraction1.equals(fraction2);
-        }
-*/
+
         //5. Print the result of the operation
-        fraction1.toLowestTerms();
-        System.out.println("Result = " + fraction1.toString()); //NEED TO SIMPLIFY FRACTION - MAKE A METHOD FOR THAT? to lowest terms
+        if (finalText == 0) {
+            fraction1.toLowestTerms();
+            System.out.println("Result = " + fraction1.toString()); //NEED TO SIMPLIFY FRACTION - MAKE A METHOD FOR THAT? to lowest terms
+        } else {
+            if (result == true) {
+                System.out.println("The fractions are equal.");
+            } else {
+                System.out.println("The fractions are not equal.");
+            }
+        }
     }
 
     public static void intro() {

@@ -107,14 +107,31 @@ public class Fraction {
         return new Fraction(this.numerator, this.denominator);
     }
 
-/*    }
-
     public boolean equals(Object other){
-        //has parameters Object other, returns boolean, must take in an "Object" to properly override the Object class's equals method,
-        //but should ultimately check if two fractions are equal
+        /*has parameters Object other, returns boolean, must take in an "Object" to properly override the Object class's equals method,
+        but should ultimately check if two fractions are equal
+        Override the Object equals() method so that it accurately determines whether or not two fractions are equal. In order to have it override, it has to
+        take an Object as a parameter. Your method should check whether or not the parameter is an instanceof Fraction, since if it is not a Fraction it
+        cannot be equal. Don’t forget to cast the parameter to a Fraction after you check if it is an Object of type*/
+        boolean equal = false;
+        Fraction otherX = null;
+
+        if (other instanceof Fraction) {
+            otherX = (Fraction) other;
+            this.toLowestTerms();
+            otherX.toLowestTerms();
+            if (otherX.numerator == this.numerator && otherX.denominator == this.denominator) {
+                equal = true;
+            }
+
+        } else {
+            equal = false;
+        }
+
+        return equal;
 
     }
-*/
+
     public void toLowestTerms(){
         //has no parameters, returns void, converts fraction to the lowest terms uses gcd() Euclidean Algorithm
         //while a and b are not zero
